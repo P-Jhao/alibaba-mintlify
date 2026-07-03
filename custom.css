@@ -5,7 +5,18 @@
 
 #assistant-entry,
 #assistant-entry-mobile,
+#chat-assistant-sheet,
+#chat-assistant-textarea,
+.chat-assistant-floating-input,
+.chat-assistant-input,
+.chat-assistant-send-button,
 chat-assistant-floating-input,
+chat-assistant-sheet,
+chat-assistant-input,
 #ask-assistant-code-block-button {
+  display: none !important;
+}
+
+.sticky.bottom-0:has(.chat-assistant-floating-input) {
   display: none !important;
 }
