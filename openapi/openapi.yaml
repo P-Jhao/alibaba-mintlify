@@ -1,0 +1,755 @@
+openapi: 3.1.0
+info:
+  title: Pollo AI Mock API
+  description: |
+    AI 生成 API Mock 规范，用于 Mintlify 文档站。
+    本地 Mock Server 默认地址：`http://localhost:4010`
+  version: 1.0.0
+  contact:
+    name: Mock API Support
+    email: mock@example.com
+
+servers:
+  - url: http://127.0.0.1:4010
+    description: 本地 Prism Mock Server
+
+security:
+  - bearerAuth: []
+
+paths:
+  /v1/video/seedance/1-5-pro:
+    post:
+      operationId: createSeedance15Pro
+      summary: Seedance 1.5 Pro
+      description: 使用 Seedance 1.5 Pro 模型生成视频，返回异步任务 ID。
+      tags:
+        - Videos
+        - Seedance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VideoGenerationRequest"
+            examples:
+              default:
+                summary: 文本生成视频
+                value:
+                  prompt: 无人机航拍城市夜景，镜头缓慢推进，电影级光影
+                  duration: 5
+                  resolution: 1080p
+                  aspect_ratio: "16:9"
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_seedance_15pro_001
+                    status: processing
+                    model: seedance-1.5-pro
+                    created: 1700000001
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/video/seedance/pro-fast:
+    post:
+      operationId: createSeedanceProFast
+      summary: Seedance Pro Fast
+      description: 使用 Seedance Pro Fast 模型快速生成视频。
+      tags:
+        - Videos
+        - Seedance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VideoGenerationRequest"
+            examples:
+              default:
+                summary: 快速视频生成
+                value:
+                  prompt: 海浪拍打礁石，慢动作特写
+                  duration: 3
+                  resolution: 720p
+                  aspect_ratio: "16:9"
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_seedance_profast_001
+                    status: processing
+                    model: seedance-pro-fast
+                    created: 1700000002
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/video/seedance/1-0-lite:
+    post:
+      operationId: createSeedance10Lite
+      summary: Seedance 1.0 Lite
+      description: 使用 Seedance 1.0 Lite 轻量模型生成视频。
+      tags:
+        - Videos
+        - Seedance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VideoGenerationRequest"
+            examples:
+              default:
+                summary: 轻量视频生成
+                value:
+                  prompt: 卡通风格的小猫在草地上奔跑
+                  duration: 4
+                  resolution: 480p
+                  aspect_ratio: "1:1"
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_seedance_10lite_001
+                    status: processing
+                    model: seedance-1.0-lite
+                    created: 1700000003
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/video/seedance/1-0-pro:
+    post:
+      operationId: createSeedance10Pro
+      summary: Seedance 1.0 Pro
+      description: 使用 Seedance 1.0 Pro 模型生成高质量视频。
+      tags:
+        - Videos
+        - Seedance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VideoGenerationRequest"
+            examples:
+              default:
+                summary: 高质量视频生成
+                value:
+                  prompt: 赛博朋克风格的雨夜街道，霓虹灯反射
+                  duration: 6
+                  resolution: 1080p
+                  aspect_ratio: "16:9"
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_seedance_10pro_001
+                    status: processing
+                    model: seedance-1.0-pro
+                    created: 1700000004
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/video/kling/1-6:
+    post:
+      operationId: createKling16
+      summary: Kling 1.6
+      description: 使用 Kling 1.6 模型生成视频。
+      tags:
+        - Videos
+        - Kling AI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VideoGenerationRequest"
+            examples:
+              default:
+                summary: Kling 视频生成
+                value:
+                  prompt: 一位舞者在空荡的剧院中旋转，聚光灯跟随
+                  duration: 5
+                  resolution: 1080p
+                  aspect_ratio: "9:16"
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_kling_16_001
+                    status: processing
+                    model: kling-1.6
+                    created: 1700000005
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/video/pollo/generations:
+    post:
+      operationId: createPolloVideo
+      summary: Pollo Video
+      description: 使用 Pollo 自研模型生成视频。
+      tags:
+        - Videos
+        - Pollo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VideoGenerationRequest"
+            examples:
+              default:
+                summary: Pollo 视频生成
+                value:
+                  prompt: 日出时分的山脉全景，云雾缭绕
+                  duration: 5
+                  resolution: 720p
+                  aspect_ratio: "16:9"
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_pollo_video_001
+                    status: processing
+                    model: pollo-video
+                    created: 1700000006
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/video/google/veo-2:
+    post:
+      operationId: createGoogleVeo2
+      summary: Google Veo 2
+      description: 使用 Google Veo 2 模型生成视频（Mock 占位）。
+      tags:
+        - Videos
+        - Google
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VideoGenerationRequest"
+            examples:
+              default:
+                summary: Veo 2 视频生成
+                value:
+                  prompt: 水下珊瑚礁生态系统，鱼群穿梭
+                  duration: 8
+                  resolution: 1080p
+                  aspect_ratio: "16:9"
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VideoGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_google_veo2_001
+                    status: processing
+                    model: google-veo-2
+                    created: 1700000007
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/image/gpt-image/generations:
+    post:
+      operationId: createGptImage
+      summary: GPT Image
+      description: 使用 GPT Image 模型生成图像。
+      tags:
+        - Image
+        - GPT Image
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageGenerationRequest"
+            examples:
+              default:
+                summary: GPT 图像生成
+                value:
+                  prompt: 一只在星空下奔跑的柴犬，赛博朋克风格
+                  size: 1024x1024
+                  n: 1
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImageGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_gpt_image_001
+                    status: processing
+                    model: gpt-image
+                    created: 1700000010
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/image/nano-banana/generations:
+    post:
+      operationId: createNanoBanana
+      summary: Nano Banana
+      description: 使用 Nano Banana 模型生成图像。
+      tags:
+        - Image
+        - Nano Banana
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageGenerationRequest"
+            examples:
+              default:
+                summary: Nano Banana 图像生成
+                value:
+                  prompt: 极简风格的香蕉图标，扁平设计
+                  size: 512x512
+                  n: 1
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImageGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_nano_banana_001
+                    status: processing
+                    model: nano-banana
+                    created: 1700000011
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/image/seedream/generations:
+    post:
+      operationId: createSeedream
+      summary: Seedream
+      description: 使用 Seedream 模型生成图像。
+      tags:
+        - Image
+        - Seedream
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageGenerationRequest"
+            examples:
+              default:
+                summary: Seedream 图像生成
+                value:
+                  prompt: 梦幻风格的森林精灵，水彩画质感
+                  size: 1024x1024
+                  n: 1
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImageGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_seedream_001
+                    status: processing
+                    model: seedream
+                    created: 1700000012
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/image/kling/generations:
+    post:
+      operationId: createKlingImage
+      summary: Kling Image
+      description: 使用 Kling 模型生成图像。
+      tags:
+        - Image
+        - Kling
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageGenerationRequest"
+            examples:
+              default:
+                summary: Kling 图像生成
+                value:
+                  prompt: 中国水墨画风格的山水，留白意境
+                  size: 1024x1024
+                  n: 1
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImageGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_kling_image_001
+                    status: processing
+                    model: kling-image
+                    created: 1700000013
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/image/pollojourney/generations:
+    post:
+      operationId: createPollojourney
+      summary: Pollojourney
+      description: 使用 Pollojourney 模型生成图像。
+      tags:
+        - Image
+        - Pollojourney
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ImageGenerationRequest"
+            examples:
+              default:
+                summary: Pollojourney 图像生成
+                value:
+                  prompt: 未来主义城市天际线，日落时分
+                  size: 1792x1024
+                  n: 1
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ImageGenerationResponse"
+              examples:
+                default:
+                  summary: 任务已创建
+                  value:
+                    task_id: task_pollojourney_001
+                    status: processing
+                    model: pollojourney
+                    created: 1700000014
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  /v1/tasks/{task_id}:
+    get:
+      operationId: getTaskStatus
+      summary: Get Task Status
+      description: 根据 task_id 查询异步生成任务的状态与结果。
+      tags:
+        - Task
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          description: 异步任务 ID
+          schema:
+            type: string
+          example: task_seedance_15pro_001
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TaskStatusResponse"
+              examples:
+                completed:
+                  summary: 任务完成
+                  value:
+                    task_id: task_seedance_15pro_001
+                    status: completed
+                    type: video.generation
+                    progress: 100
+                    result:
+                      url: https://example.com/mock-videos/task_seedance_15pro_001.mp4
+                      model: seedance-1.5-pro
+                processing:
+                  summary: 任务进行中
+                  value:
+                    task_id: task_seedance_15pro_001
+                    status: processing
+                    type: video.generation
+                    progress: 45
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /v1/credits/balance:
+    get:
+      operationId: getCreditsBalance
+      summary: Check Your Credits
+      description: 返回当前账号的积分余额与使用情况。
+      tags:
+        - Credits
+      responses:
+        "200":
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreditsBalanceResponse"
+              examples:
+                default:
+                  summary: 积分余额
+                  value:
+                    object: credits.balance
+                    balance: 98500
+                    currency: credits
+                    used_today: 1500
+                    limit_daily: 100000
+                    reset_at: 1700086400
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: |
+        在 Authorization Header 中传入 API Key。
+        格式：`Bearer sk-mock-xxx`
+
+  responses:
+    Unauthorized:
+      description: 认证失败
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            default:
+              value:
+                error:
+                  message: Invalid API Key provided
+                  type: authentication_error
+                  code: invalid_api_key
+    NotFound:
+      description: 资源不存在
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+          examples:
+            default:
+              value:
+                error:
+                  message: Resource not found
+                  type: not_found_error
+                  code: resource_not_found
+
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - message
+            - type
+            - code
+          properties:
+            message:
+              type: string
+            type:
+              type: string
+            code:
+              type: string
+
+    VideoGenerationRequest:
+      type: object
+      required:
+        - prompt
+      properties:
+        prompt:
+          type: string
+          description: 视频生成提示词
+        duration:
+          type: integer
+          minimum: 1
+          maximum: 30
+          default: 5
+          description: 视频时长（秒）
+        resolution:
+          type: string
+          enum:
+            - 480p
+            - 720p
+            - 1080p
+          default: 720p
+          description: 视频分辨率
+        aspect_ratio:
+          type: string
+          enum:
+            - "16:9"
+            - "9:16"
+            - "1:1"
+          default: "16:9"
+          description: 画面比例
+
+    VideoGenerationResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          description: 异步任务 ID，用于查询生成进度
+        status:
+          type: string
+          enum:
+            - queued
+            - processing
+            - completed
+            - failed
+        model:
+          type: string
+        created:
+          type: integer
+
+    ImageGenerationRequest:
+      type: object
+      required:
+        - prompt
+      properties:
+        prompt:
+          type: string
+          description: 图像生成提示词
+        size:
+          type: string
+          enum:
+            - 256x256
+            - 512x512
+            - 1024x1024
+            - 1792x1024
+          default: 1024x1024
+          description: 图像尺寸
+        n:
+          type: integer
+          minimum: 1
+          maximum: 4
+          default: 1
+          description: 生成数量
+
+    ImageGenerationResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+          description: 异步任务 ID
+        status:
+          type: string
+          enum:
+            - queued
+            - processing
+            - completed
+            - failed
+        model:
+          type: string
+        created:
+          type: integer
+
+    TaskStatusResponse:
+      type: object
+      properties:
+        task_id:
+          type: string
+        status:
+          type: string
+          enum:
+            - queued
+            - processing
+            - completed
+            - failed
+        type:
+          type: string
+          description: 任务类型，如 video.generation 或 image.generation
+        progress:
+          type: integer
+          minimum: 0
+          maximum: 100
+        result:
+          type: object
+          additionalProperties: true
+          description: 任务完成时的结果数据
+
+    CreditsBalanceResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          example: credits.balance
+        balance:
+          type: integer
+        currency:
+          type: string
+          example: credits
+        used_today:
+          type: integer
+        limit_daily:
+          type: integer
+        reset_at:
+          type: integer

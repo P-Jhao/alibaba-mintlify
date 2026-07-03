@@ -1,0 +1,90 @@
+---
+title: "快速开始"
+description: "在本地启动 Prism Mock Server 与 Mintlify 文档预览，完成首次 API 调用。"
+---
+
+## 前置条件
+
+- Node.js 20.17+
+- pnpm（推荐）
+- 全局安装 Mintlify CLI：`pnpm add -g mint`
+
+<Steps>
+  <Step title="安装依赖">
+    在 `site/` 目录执行：
+
+    ```bash
+    pnpm install
+    ```
+  </Step>
+
+  <Step title="启动 Mock API Server">
+    新开一个终端，在 `site/` 目录执行：
+
+    ```bash
+    pnpm mock:api
+    ```
+
+    成功启动后，Mock Server 监听 `http://127.0.0.1:4010`。
+  </Step>
+
+  <Step title="启动文档预览">
+    再开一个终端，在 `site/` 目录执行：
+
+    ```bash
+    pnpm dev:docs
+    ```
+
+    浏览器访问 `http://localhost:3000` 预览文档站。
+  </Step>
+
+  <Step title="在 Playground 中测试">
+    1. 在侧边栏展开 **Videos > Seedance**，选择 `POST Seedance 1.5 Pro`
+    2. 在 Playground 的 **Authorization** 字段填入 `Bearer sk-mock-test-key`
+    3. 点击 **Send**，查看 Prism 返回的 Mock 响应（含 `task_id` 与 `status`）
+
+    <Tip>
+      本地练手项目已设置 `proxy: false`，浏览器会直连 `http://127.0.0.1:4010`（Prism 默认开启 CORS）。请确保 Mock Server 保持运行。
+    </Tip>
+  </Step>
+</Steps>
+
+## 命令行验证
+
+Mock Server 启动后，可用 curl 直接测试 Seedance 1.5 Pro：
+
+```bash
+curl -X POST "http://127.0.0.1:4010/v1/video/seedance/1-5-pro" \
+  -H "Authorization: Bearer sk-mock-test-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "prompt": "无人机航拍城市夜景，镜头缓慢推进",
+    "duration": 5,
+    "resolution": "1080p",
+    "aspect_ratio": "16:9"
+  }'
+```
+
+响应示例：
+
+```json
+{
+  "task_id": "task_seedance_15pro_001",
+  "status": "processing",
+  "model": "seedance-1.5-pro",
+  "created": 1700000001
+}
+```
+
+使用返回的 `task_id` 查询任务状态：
+
+```bash
+curl "http://127.0.0.1:4010/v1/tasks/task_seedance_15pro_001" \
+  -H "Authorization: Bearer sk-mock-test-key"
+```
+
+## 下一步
+
+- 在侧边栏浏览 **Videos** / **Image** 下的各 provider 模型 endpoint
+- 了解 [Webhook](/webhooks) 异步通知机制（Mock 占位）
+- 查看 [定价说明](/pricing)

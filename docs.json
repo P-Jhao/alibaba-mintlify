@@ -1,0 +1,150 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Pollo AI Mock",
+  "description": "Mock API 文档站 — 用于 Mintlify 框架调研",
+  "theme": "mint",
+  "logo": {
+    "light": "/images/logo/light.svg",
+    "dark": "/images/logo/dark.svg"
+  },
+  "colors": {
+    "primary": "#6366F1",
+    "light": "#4F46E5",
+    "dark": "#818CF8"
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Explore",
+        "href": "https://example.com/explore"
+      },
+      {
+        "label": "API Keys",
+        "href": "https://example.com/api-keys"
+      },
+      {
+        "label": "Pricing",
+        "href": "/pricing"
+      },
+      {
+        "label": "Contact",
+        "href": "https://example.com/contact"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "获取 API Key",
+      "href": "https://example.com/signup"
+    }
+  },
+  "banner": {
+    "content": "这是 **Mock 练手项目**。Playground 需先启动 Prism Mock Server，详见 [快速开始](/quickstart)。",
+    "dismissible": true,
+    "type": "warning"
+  },
+  "api": {
+    "openapi": ["openapi/openapi.yaml"],
+    "playground": {
+      "display": "interactive",
+      "proxy": false
+    },
+    "examples": {
+      "languages": ["curl", "python", "javascript"],
+      "defaults": "required"
+    }
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Get Started",
+        "pages": [
+          "introduction",
+          "quickstart",
+          "pricing",
+          "webhooks",
+          "mcp-server",
+          "agent-skills"
+        ]
+      },
+      {
+        "group": "API",
+        "openapi": "openapi/openapi.yaml",
+        "groups": [
+          {
+            "group": "Videos",
+            "expanded": false,
+            "groups": [
+              {
+                "group": "Seedance",
+                "expanded": false,
+                "pages": [
+                  "POST /v1/video/seedance/1-5-pro",
+                  "POST /v1/video/seedance/pro-fast",
+                  "POST /v1/video/seedance/1-0-lite",
+                  "POST /v1/video/seedance/1-0-pro"
+                ]
+              },
+              {
+                "group": "Kling AI",
+                "expanded": false,
+                "pages": ["POST /v1/video/kling/1-6"]
+              },
+              {
+                "group": "Pollo",
+                "expanded": false,
+                "pages": ["POST /v1/video/pollo/generations"]
+              },
+              {
+                "group": "Google",
+                "expanded": false,
+                "pages": ["POST /v1/video/google/veo-2"]
+              }
+            ]
+          },
+          {
+            "group": "Image",
+            "expanded": false,
+            "groups": [
+              {
+                "group": "GPT Image",
+                "expanded": false,
+                "pages": ["POST /v1/image/gpt-image/generations"]
+              },
+              {
+                "group": "Nano Banana",
+                "expanded": false,
+                "pages": ["POST /v1/image/nano-banana/generations"]
+              },
+              {
+                "group": "Seedream",
+                "expanded": false,
+                "pages": ["POST /v1/image/seedream/generations"]
+              },
+              {
+                "group": "Kling",
+                "expanded": false,
+                "pages": ["POST /v1/image/kling/generations"]
+              },
+              {
+                "group": "Pollojourney",
+                "expanded": false,
+                "pages": ["POST /v1/image/pollojourney/generations"]
+              }
+            ]
+          },
+          {
+            "group": "Task",
+            "pages": ["GET /v1/tasks/{task_id}"]
+          },
+          {
+            "group": "Credits",
+            "pages": ["GET /v1/credits/balance"]
+          }
+        ]
+      }
+    ]
+  }
+}

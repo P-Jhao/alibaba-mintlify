@@ -1,0 +1,62 @@
+---
+title: "API 介绍"
+sidebarTitle: "API Introduction"
+description: "了解 Pollo 风格 Mock API 平台的能力范围、认证方式与本地开发流程。"
+---
+
+## 概述
+
+Pollo AI Mock 是一个 **Pollo 风格** 的模拟 API 文档站，用于 Mintlify 框架调研。它演示了 **Docs-as-Code + OpenAPI 驱动 + 交互式 Playground** 的完整工作流，侧边栏采用 **折叠分组 + 模型详情页** 结构，API 请求由本地 [Prism](https://stoplight.io/open-source/prism) Mock Server 返回预设响应。
+
+<CardGroup cols={2}>
+  <Card title="快速开始" icon="rocket" href="/quickstart">
+    安装依赖并启动 Mock Server 与文档预览。
+  </Card>
+  <Card title="Seedance 1.5 Pro" icon="video" href="/api-reference/videos/seedance-15-pro">
+    视频生成 API 参考示例。
+  </Card>
+  <Card title="GPT Image" icon="image" href="/api-reference/image/gpt-image">
+    图像生成 API 参考示例。
+  </Card>
+  <Card title="任务状态" icon="list-checks" href="/api-reference/task/get-task-status">
+    查询异步任务进度与结果。
+  </Card>
+</CardGroup>
+
+## 支持的能力
+
+| 能力 | 说明 |
+|------|------|
+| Videos | Seedance、Kling AI、Pollo、Google 等多 provider 视频生成 |
+| Image | GPT Image、Nano Banana、Seedream、Kling、Pollojourney 图像生成 |
+| Task | 通用异步任务状态查询 |
+| Credits | 积分余额查询 |
+
+## 认证方式
+
+所有 API 请求需在 Header 中携带 Bearer Token：
+
+```bash
+Authorization: Bearer sk-mock-xxx
+```
+
+Mock 环境下任意以 `sk-mock-` 开头的 Key 均可通过认证。
+
+## 基础 URL
+
+本地 Mock Server 默认地址：
+
+```
+http://localhost:4010
+```
+
+<Note>
+  线上部署 Mintlify 后，Playground 默认仍指向 `localhost:4010`。如需在线测试，需修改 OpenAPI spec 中的 `servers.url` 或部署可公网访问的 Mock 服务。
+</Note>
+
+## 开始使用
+
+1. 阅读 [快速开始](/quickstart) 启动本地环境
+2. 在侧边栏展开 **Videos** 或 **Image** 分组，选择模型 endpoint，使用 Playground 发送请求
+3. 通过 [Task API](/api-reference/task/get-task-status) 查询异步任务状态
+4. 查看 [定价说明](/pricing) 了解 Mock 计费模型

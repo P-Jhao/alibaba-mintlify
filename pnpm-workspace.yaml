@@ -1,0 +1,5 @@
+allowBuilds:
+  '@scarf/scarf': true
+  keytar: true
+  puppeteer: true
+  sharp: true

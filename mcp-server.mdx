@@ -1,0 +1,49 @@
+---
+title: "MCP Server"
+description: "MCP Server 接入说明（Mock 占位）。"
+---
+
+## 概述
+
+MCP（Model Context Protocol）允许 AI Agent（如 Cursor、Claude Desktop）通过标准协议调用 API。
+
+<Note>
+  本页面为 **Mock 占位文档**。当前项目未提供真实 MCP Server 实现，以下内容仅演示文档结构。
+</Note>
+
+## Mock 配置示例
+
+在 Cursor 的 MCP 配置中添加（示例）：
+
+```json
+{
+  "mcpServers": {
+    "pollo-ai-mock": {
+      "command": "npx",
+      "args": ["-y", "@example/pollo-ai-mock-mcp"],
+      "env": {
+        "POLLO_API_KEY": "sk-mock-xxx",
+        "POLLO_API_BASE_URL": "http://127.0.0.1:4010"
+      }
+    }
+  }
+}
+```
+
+<Warning>
+  `@example/pollo-ai-mock-mcp` 为占位包名，不存在于 npm。真实 MCP Server 需产品/后端团队提供。
+</Warning>
+
+## 可用工具（Mock）
+
+| 工具名 | 说明 |
+|--------|------|
+| `create_video` | 调用视频生成 endpoint（如 `POST /v1/video/seedance/1-5-pro`） |
+| `create_image` | 调用图像生成 endpoint（如 `POST /v1/image/gpt-image/generations`） |
+| `get_task_status` | 调用 `GET /v1/tasks/{task_id}` |
+| `check_credits` | 调用 `GET /v1/credits/balance` |
+
+## 下一步
+
+- 启动 [Mock API Server](/quickstart) 后测试 REST endpoint
+- 了解 [Agent Skills](/agent-skills) 文档

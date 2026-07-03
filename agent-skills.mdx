@@ -1,0 +1,46 @@
+---
+title: "Agent Skills"
+description: "Cursor Agent Skills 安装说明（Mock 占位）。"
+---
+
+## 概述
+
+Agent Skills 是 Cursor 等 IDE 中可复用的 AI 指令文件，帮助 Agent 理解 API 用法与项目约定。
+
+<Note>
+  本页面为 **Mock 占位文档**。当前仓库未包含真实 Skill 文件，以下内容仅演示文档结构。
+</Note>
+
+## Mock Skill 结构
+
+```
+.agents/skills/pollo-ai-mock/
+├── SKILL.md          # Skill 主文件
+└── references/
+    └── openapi.yaml  # API 参考
+```
+
+## 安装方式（Mock）
+
+1. 将 Skill 目录复制到项目的 `.agents/skills/` 下
+2. 在 Cursor 中打开项目，Agent 会自动加载可用 Skills
+3. 向 Agent 提问时引用 Skill 名称，例如：「使用 pollo-ai-mock skill 帮我调用 Seedance 1.5 Pro」
+
+<Tip>
+  真实 Skill 文件需由产品/文档团队维护，并与 OpenAPI spec 保持同步。
+</Tip>
+
+## Skill 应包含的内容
+
+| 章节 | 说明 |
+|------|------|
+| 认证 | Bearer Token 格式与 Header 设置 |
+| Base URL | 环境区分（本地 Mock / 生产） |
+| 常用 endpoint | Videos、Image 各 provider 调用示例 |
+| 任务轮询 | `GET /v1/tasks/{task_id}` 用法 |
+| 错误处理 | 统一错误响应结构 |
+
+## 下一步
+
+- 阅读 [API 介绍](/introduction)
+- 查看 [MCP Server](/mcp-server) 文档

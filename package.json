@@ -1,0 +1,16 @@
+{
+  "name": "llm-api-mock-docs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mintlify Mock API 文档站（OpenAPI + Prism）",
+  "scripts": {
+    "mock:api": "prism mock openapi/openapi.yaml -p 4010 --host 127.0.0.1",
+    "dev:docs": "mint dev",
+    "validate": "mint validate",
+    "broken-links": "mint broken-links"
+  },
+  "devDependencies": {
+    "@stoplight/prism-cli": "^5.12.0",
+    "mint": "^4.2.359"
+  }
+}

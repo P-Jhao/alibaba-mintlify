@@ -1,0 +1,53 @@
+---
+title: "Webhooks"
+description: "Webhook 异步通知机制说明（Mock 占位）。"
+---
+
+## 概述
+
+Webhook 允许在异步任务（如视频或图像生成）完成时，向你的服务端推送事件通知。
+
+<Note>
+  本页面为 **Mock 占位文档**。当前 Mock API 不包含 Webhook 注册 endpoint，事件 payload 结构仅供参考。
+</Note>
+
+## 支持的事件类型（Mock）
+
+| 事件 | 说明 |
+|------|------|
+| `task.completed` | 异步任务成功完成 |
+| `task.failed` | 异步任务失败 |
+| `video.ready` | 视频生成完成，可下载 |
+| `image.ready` | 图像生成完成，可下载 |
+| `credits.low` | 积分余额低于阈值 |
+
+## 签名验证（Mock）
+
+Mock 环境下，Webhook 请求携带以下 Header：
+
+```
+X-Mock-Signature: sha256=mock-signature-value
+X-Mock-Timestamp: 1700000000
+```
+
+验证逻辑需在你的服务端自行实现。真实产品的签名算法 **需后端确认**。
+
+## 示例 Payload
+
+```json
+{
+  "id": "evt_mock_001",
+  "type": "task.completed",
+  "created": 1700000000,
+  "data": {
+    "task_id": "task_seedance_15pro_001",
+    "status": "completed",
+    "result_url": "https://example.com/mock-videos/task_seedance_15pro_001.mp4"
+  }
+}
+```
+
+## 下一步
+
+- 使用 [Get Task Status](/api-reference/task/get-task-status) 轮询任务状态
+- 阅读 [快速开始](/quickstart) 了解 Mock 环境搭建
