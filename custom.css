@@ -1,0 +1,11 @@
+/*
+ * Starter 计划无法在 Dashboard 关闭 Ask Assistant，通过 CSS 隐藏入口，
+ * 避免误触消耗 credits。
+ */
+
+#assistant-entry,
+#assistant-entry-mobile,
+chat-assistant-floating-input,
+#ask-assistant-code-block-button {
+  display: none !important;
+}
